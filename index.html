@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nomio — 개인정보처리방침</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6366F1;
+      --primary-light: #818CF8;
+      --accent: #06B6D4;
+      --bg: #0D0B1A;
+      --surface: #161328;
+      --surface2: #1E1B2E;
+      --border: rgba(99,102,241,0.15);
+      --text: #E8E6FF;
+      --text-muted: rgba(232,230,255,0.55);
+      --gradient: linear-gradient(135deg, #6366F1, #8B5CF6, #06B6D4);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans KR', 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    /* 배경 장식 */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -200px; left: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: -150px; right: -150px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(6,182,212,0.09) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* 헤더 */
+    header {
+      position: relative;
+      z-index: 1;
+      padding: 60px 24px 48px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 48px; height: 48px;
+      background: var(--gradient);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; font-weight: 800;
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      box-shadow: 0 8px 24px rgba(99,102,241,0.35);
+    }
+
+    .logo-name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    header h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* 컨테이너 */
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* 요약 카드 */
+    .summary-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    .summary-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .summary-icon {
+      font-size: 22px;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    .summary-item strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .summary-item span {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* 섹션 */
+    section {
+      margin-bottom: 40px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .section-num {
+      width: 28px; height: 28px;
+      background: var(--gradient);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      flex-shrink: 0;
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 24px;
+    }
+
+    p {
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      color: var(--text-muted);
+      padding: 6px 0 6px 20px;
+      position: relative;
+      border-bottom: 1px solid rgba(99,102,241,0.08);
+    }
+    ul li:last-child { border-bottom: none; }
+
+    ul li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 16px;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--primary-light);
+    }
+
+    .highlight {
+      color: var(--primary-light);
+      font-weight: 500;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(99,102,241,0.15);
+      color: var(--primary-light);
+      border: 1px solid rgba(99,102,241,0.3);
+      border-radius: 6px;
+      padding: 2px 8px;
+      font-size: 12px;
+      font-weight: 500;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    /* 연락처 */
+    .contact-card {
+      background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(6,182,212,0.08));
+      border: 1px solid rgba(99,102,241,0.25);
+      border-radius: 14px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .contact-card p {
+      margin-bottom: 16px;
+    }
+
+    .contact-email {
+      display: inline-block;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+    }
+
+    /* 푸터 */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 24px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    /* 영어 섹션 구분선 */
+    .lang-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 56px 0 40px;
+    }
+    .lang-divider::before, .lang-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .lang-divider span {
+      color: var(--text-muted);
+      font-size: 12px;
+      font-family: 'DM Sans', sans-serif;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 480px) {
+      header { padding: 40px 20px 32px; }
+      .container { padding: 32px 16px 60px; }
+      .summary-card { grid-template-columns: 1fr 1fr; }
+      .card { padding: 16px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="#">
+    <div class="logo-icon">N</div>
+    <span class="logo-name">Nomio</span>
+  </a>
+  <h1>개인정보처리방침</h1>
+  <p>Privacy Policy &nbsp;·&nbsp; 최종 업데이트: 2026년 3월</p>
+</header>
+
+<div class="container">
+
+  <!-- 요약 카드 -->
+  <div class="summary-card">
+    <div class="summary-item">
+      <span class="summary-icon">🔒</span>
+      <div>
+        <strong>수집 없음</strong>
+        <span>개인 금융 데이터는 기기에만 저장</span>
+      </div>
+    </div>
+    <div class="summary-item">
+      <span class="summary-icon">📢</span>
+      <div>
+        <strong>Google AdMob</strong>
+        <span>맞춤형 광고 표시 (거부 가능)</span>
+      </div>
+    </div>
+    <div class="summary-item">
+      <span class="summary-icon">📤</span>
+      <div>
+        <strong>공유 없음</strong>
+        <span>데이터를 외부에 전송하지 않음</span>
+      </div>
+    </div>
+    <div class="summary-item">
+      <span class="summary-icon">🌐</span>
+      <div>
+        <strong>환율 API만</strong>
+        <span>실시간 환율 조회 시 네트워크 사용</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1 -->
+  <section>
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <h2>수집하는 정보</h2>
+    </div>
+    <div class="card">
+      <p>Nomio는 앱 사용에 필요한 <span class="highlight">최소한의 정보만</span> 처리하며, 사용자의 개인정보를 수집하지 않습니다.</p>
+      <ul>
+        <li>지출·수입·계좌 등 금융 데이터 <span class="badge">기기 로컬 저장</span></li>
+        <li>앱 설정 (언어, 통화, 테마 등) <span class="badge">기기 로컬 저장</span></li>
+        <li>환율 조회 시 외부 API 호출 <span class="badge">exchangerate-api.com</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section>
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <h2>데이터 저장 위치</h2>
+    </div>
+    <div class="card">
+      <p>입력하신 모든 금융 데이터는 <span class="highlight">사용자의 기기 내부 저장소에만</span> 저장됩니다. Nomio 서버 또는 제3자 서버로 전송되지 않습니다.</p>
+      <ul>
+        <li>앱 삭제 시 모든 데이터가 함께 삭제됩니다</li>
+        <li>백업 기능 사용 시 사용자가 직접 선택한 위치(iCloud / Google Drive / 로컬)에 저장됩니다</li>
+        <li>백업 파일은 사용자가 완전히 통제합니다</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section>
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <h2>네트워크 사용</h2>
+    </div>
+    <div class="card">
+      <p>Nomio는 단 하나의 목적으로만 인터넷을 사용합니다:</p>
+      <ul>
+        <li><strong>실시간 환율 조회</strong> — exchangerate-api.com API를 통해 환율 정보를 가져옵니다. 이 과정에서 개인 정보는 전송되지 않으며 환율 요청에는 사용자 식별 정보가 포함되지 않습니다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section>
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <h2>생체 인증</h2>
+    </div>
+    <div class="card">
+      <p>앱 잠금 기능 활성화 시 기기의 생체 인증(Face ID, 지문 인식 등)을 사용합니다.</p>
+      <ul>
+        <li>생체 정보는 기기 보안 칩(Secure Enclave / TEE)에서만 처리됩니다</li>
+        <li>Nomio는 생체 데이터에 접근하거나 저장하지 않습니다</li>
+        <li>인증 결과(성공/실패)만 앱에 전달됩니다</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section>
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <h2>제3자 서비스</h2>
+    </div>
+    <div class="card">
+      <p>Nomio는 다음의 제3자 서비스를 사용합니다:</p>
+      <ul>
+        <li><strong>Google AdMob</strong> — 앱 내 배너 광고 제공. Google의 광고 ID를 사용하여 관심 기반 광고가 표시될 수 있습니다. <a href="https://policies.google.com/privacy" style="color:#818CF8;">Google 개인정보처리방침</a> 참조</li>
+        <li><strong>환율 API (exchangerate-api.com)</strong> — 실시간 환율 조회 (익명 요청)</li>
+        <li>소셜 로그인 없음 · 행동 분석 도구 없음 (Firebase Analytics 등)</li>
+      </ul>
+      <p style="margin-top:12px;">기기 설정에서 <span class="highlight">광고 ID 재설정</span> 또는 <span class="highlight">맞춤 광고 거부</span>가 가능합니다.<br>Android: 설정 → 개인정보 보호 → 광고 · iOS: 설정 → 개인정보 보호 → Apple 광고</p>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section>
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <h2>아동 개인정보 보호</h2>
+    </div>
+    <div class="card">
+      <p>Nomio는 13세 미만 아동을 대상으로 하지 않으며, 아동의 개인정보를 의도적으로 수집하지 않습니다.</p>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section>
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <h2>방침 변경</h2>
+    </div>
+    <div class="card">
+      <p>본 방침이 변경될 경우 이 페이지를 통해 공지합니다. 중요한 변경사항이 있을 경우 앱 내 알림을 통해 안내할 수 있습니다.</p>
+    </div>
+  </section>
+
+  <!-- 연락처 -->
+  <section>
+    <div class="section-header">
+      <div class="section-num">8</div>
+      <h2>문의</h2>
+    </div>
+    <div class="contact-card">
+      <p>개인정보처리방침에 관한 문의사항이 있으시면 아래로 연락해 주세요.</p>
+      <a class="contact-email" href="mailto:privacy@nomio.app">privacy@nomio.app</a>
+    </div>
+  </section>
+
+  <!-- 영문 구분선 -->
+  <div class="lang-divider"><span>English</span></div>
+
+  <!-- EN Header -->
+  <section>
+    <div class="section-header">
+      <div class="section-num">EN</div>
+      <h2>Privacy Policy — English Summary</h2>
+    </div>
+    <div class="card">
+      <p>Nomio is a personal finance app that <span class="highlight">stores all data locally on your device</span>. We do not collect, transmit, or share your personal or financial information with any third party.</p>
+      <ul>
+        <li><strong>No personal data collected</strong> — all entries stay on your device</li>
+        <li><strong>Network use</strong> — only for fetching exchange rates (anonymous requests)</li>
+        <li><strong>Ads</strong> — Google AdMob banner ads are shown. Google may use your Advertising ID for interest-based ads. You can opt out in device settings.</li>
+        <li><strong>No analytics SDKs, no social login</strong></li>
+        <li><strong>Biometrics</strong> — processed only by the device's secure hardware; Nomio never accesses raw biometric data</li>
+        <li><strong>Backups</strong> — saved to a location of your choice (iCloud / Google Drive / local); fully under your control</li>
+      </ul>
+      <p style="margin-top:16px;">For questions: <a class="contact-email" href="mailto:privacy@nomio.app" style="-webkit-text-fill-color:unset; color:#818CF8;">privacy@nomio.app</a></p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  © 2026 Nomio · <a href="mailto:privacy@nomio.app" style="color:var(--primary-light); text-decoration:none;">privacy@nomio.app</a>
+</footer>
+
+</body>
+</html>
