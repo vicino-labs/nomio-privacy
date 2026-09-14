@@ -1,485 +1,542 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nomio — 개인정보처리방침</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #6366F1;
-      --primary-light: #818CF8;
-      --accent: #06B6D4;
-      --bg: #0D0B1A;
-      --surface: #161328;
-      --surface2: #1E1B2E;
-      --border: rgba(99,102,241,0.15);
-      --text: #E8E6FF;
-      --text-muted: rgba(232,230,255,0.55);
-      --gradient: linear-gradient(135deg, #6366F1, #8B5CF6, #06B6D4);
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"></head><body>
+<title>Nomio 개인정보처리방침</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --surface: #ffffff;
+    --ink: #202b33;
+    --ink-soft: #46545e;
+    --slate: #6b7680;
+    --accent: #4338ca;
+    --accent-soft: #ecebfb;
+    --line: #e1d9c9;
+    --tagbg: #efe9da;
+    --font-display: 'Source Serif 4', 'Iowan Old Style', Georgia, serif;
+    --font-body: 'Public Sans', -apple-system, 'Segoe UI', sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #10181f; --surface: #172029; --ink: #ece8dd; --ink-soft: #c7cdd3;
+      --slate: #8b96a0; --accent: #a5a0f5; --accent-soft: #262158; --line: #2a3540; --tagbg: #202b33;
     }
+  }
+  :root[data-theme="dark"] {
+    --bg: #10181f; --surface: #172029; --ink: #ece8dd; --ink-soft: #c7cdd3;
+    --slate: #8b96a0; --accent: #a5a0f5; --accent-soft: #262158; --line: #2a3540; --tagbg: #202b33;
+  }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+  .page { max-width: 1040px; margin: 0 auto; padding: 0 24px 96px; }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Noto Sans KR', 'DM Sans', sans-serif;
-      font-size: 15px;
-      line-height: 1.8;
-      min-height: 100vh;
-    }
+  .langbar {
+    position: sticky; top: 0; z-index: 10; display: flex; gap: 4px; padding: 14px 24px;
+    background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line); margin: 0 -24px 40px;
+  }
+  .langbar button {
+    font-family: var(--font-mono); font-size: .74rem; letter-spacing: .03em; padding: 6px 13px;
+    border-radius: 999px; border: 1px solid transparent; background: none; color: var(--slate); cursor: pointer;
+  }
+  .langbar button:hover { color: var(--ink); }
+  .langbar button.active { background: var(--accent-soft); color: var(--accent); border-color: var(--accent-soft); font-weight: 600; }
 
-    /* 배경 장식 */
-    body::before {
-      content: '';
-      position: fixed;
-      top: -200px; left: -200px;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
-    body::after {
-      content: '';
-      position: fixed;
-      bottom: -150px; right: -150px;
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(6,182,212,0.09) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
+  .masthead { padding-bottom: 32px; border-bottom: 1px solid var(--line); margin-bottom: 44px; }
+  .brand { display: flex; align-items: center; gap: 8px; color: var(--accent); font-weight: 600; letter-spacing: .02em; margin-bottom: 22px; text-decoration: none; }
+  .brand-mark { width: 22px; height: 22px; border-radius: 7px; background: var(--accent); color: var(--surface); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; font-size: .8rem; }
+  .brand span { font-family: var(--font-display); font-size: 1.05rem; }
+  h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.8rem, 1.4rem + 1.6vw, 2.5rem); line-height: 1.2; margin: 0 0 18px; text-wrap: balance; }
+  .meta { display: flex; flex-wrap: wrap; gap: 10px; }
+  .tag {
+    font-family: var(--font-mono); font-size: .72rem; letter-spacing: .05em; text-transform: uppercase;
+    background: var(--tagbg); color: var(--ink-soft); padding: 5px 11px; border-radius: 999px;
+    display: inline-flex; gap: 7px; align-items: center; white-space: nowrap;
+  }
+  .tag b { color: var(--accent); font-weight: 600; }
 
-    /* 헤더 */
-    header {
-      position: relative;
-      z-index: 1;
-      padding: 60px 24px 48px;
-      text-align: center;
-      border-bottom: 1px solid var(--border);
-    }
+  .layout { display: grid; grid-template-columns: 220px minmax(0, 680px); gap: 56px; align-items: start; }
+  @media (max-width: 860px) {
+    .layout { grid-template-columns: 1fr; }
+    .toc { position: static; order: 2; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line); }
+  }
 
-    .logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 32px;
-      text-decoration: none;
-    }
+  .toc { position: sticky; top: 64px; display: flex; flex-direction: column; gap: 1px; }
+  .toc-label { font-family: var(--font-mono); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--slate); margin-bottom: 10px; }
+  .toc a {
+    font-family: var(--font-mono); font-size: .76rem; color: var(--ink-soft); text-decoration: none;
+    padding: 7px 10px; border-radius: 7px; line-height: 1.45; transition: background .12s ease, color .12s ease;
+  }
+  .toc a:hover, .toc a:focus-visible { background: var(--accent-soft); color: var(--accent); }
 
-    .logo-icon {
-      width: 48px; height: 48px;
-      background: var(--gradient);
-      border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 26px; font-weight: 800;
-      color: white;
-      font-family: 'DM Sans', sans-serif;
-      box-shadow: 0 8px 24px rgba(99,102,241,0.35);
-    }
+  .lede { font-family: var(--font-display); font-size: 1.1rem; line-height: 1.75; color: var(--ink); max-width: 62ch; margin: 0 0 44px; }
 
-    .logo-name {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 24px;
-      font-weight: 700;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+  article section { padding-top: 30px; margin-top: 30px; border-top: 1px solid var(--line); scroll-margin-top: 72px; }
+  article section:first-of-type { padding-top: 0; margin-top: 0; border-top: none; }
+  article h2 { font-family: var(--font-display); font-weight: 600; font-size: 1.24rem; color: var(--accent); text-wrap: balance; margin: 0 0 14px; }
+  article p { font-size: .96rem; line-height: 1.8; color: var(--ink-soft); max-width: 64ch; margin: 0 0 14px; }
+  article ol, article ul { padding-left: 1.3em; display: flex; flex-direction: column; gap: 9px; margin: 0 0 14px; max-width: 62ch; }
+  article li { font-size: .96rem; line-height: 1.7; color: var(--ink-soft); }
+  article strong { color: var(--ink); font-weight: 600; }
+  article a.ext { color: var(--accent); }
+  .summary-box { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px 24px; display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
+  .summary-box li::marker { color: var(--accent); }
 
-    header h1 {
-      font-size: clamp(28px, 5vw, 42px);
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      margin-bottom: 12px;
-    }
+  .id-card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 24px 26px;
+    display: grid; grid-template-columns: auto 1fr; gap: 6px 20px; margin-bottom: 8px;
+  }
+  .id-card dt { font-family: var(--font-mono); font-size: .7rem; letter-spacing: .05em; text-transform: uppercase; color: var(--slate); }
+  .id-card dd { margin: 0; color: var(--ink); }
+  .id-card a { color: var(--accent); text-decoration: none; }
+  .id-card a:hover { text-decoration: underline; }
 
-    header p {
-      color: var(--text-muted);
-      font-size: 14px;
-    }
+  .contact-card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 28px; margin-top: 8px; display: flex; flex-direction: column; gap: 6px; }
+  .contact-card .role { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--slate); }
+  .contact-card .name { font-family: var(--font-display); font-size: 1.15rem; color: var(--ink); }
+  .contact-card a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  .contact-card a:hover { text-decoration: underline; }
 
-    /* 컨테이너 */
-    .container {
-      position: relative;
-      z-index: 1;
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 48px 24px 80px;
-    }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  footer p { font-size: .82rem; color: var(--slate); margin: 0; }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+</style>
 
-    /* 요약 카드 */
-    .summary-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px 28px;
-      margin-bottom: 48px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-    }
-
-    .summary-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-
-    .summary-icon {
-      font-size: 22px;
-      line-height: 1;
-      margin-top: 2px;
-    }
-
-    .summary-item strong {
-      display: block;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 2px;
-    }
-
-    .summary-item span {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    /* 섹션 */
-    section {
-      margin-bottom: 40px;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-
-    .section-num {
-      width: 28px; height: 28px;
-      background: var(--gradient);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px;
-      font-weight: 700;
-      color: white;
-      font-family: 'DM Sans', sans-serif;
-      flex-shrink: 0;
-    }
-
-    h2 {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 20px 24px;
-    }
-
-    p {
-      color: var(--text-muted);
-      margin-bottom: 12px;
-    }
-    p:last-child { margin-bottom: 0; }
-
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    ul li {
-      color: var(--text-muted);
-      padding: 6px 0 6px 20px;
-      position: relative;
-      border-bottom: 1px solid rgba(99,102,241,0.08);
-    }
-    ul li:last-child { border-bottom: none; }
-
-    ul li::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 16px;
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--primary-light);
-    }
-
-    .highlight {
-      color: var(--primary-light);
-      font-weight: 500;
-    }
-
-    .badge {
-      display: inline-block;
-      background: rgba(99,102,241,0.15);
-      color: var(--primary-light);
-      border: 1px solid rgba(99,102,241,0.3);
-      border-radius: 6px;
-      padding: 2px 8px;
-      font-size: 12px;
-      font-weight: 500;
-      margin-left: 6px;
-      vertical-align: middle;
-    }
-
-    /* 연락처 */
-    .contact-card {
-      background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(6,182,212,0.08));
-      border: 1px solid rgba(99,102,241,0.25);
-      border-radius: 14px;
-      padding: 24px;
-      text-align: center;
-    }
-
-    .contact-card p {
-      margin-bottom: 16px;
-    }
-
-    .contact-email {
-      display: inline-block;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-weight: 600;
-      font-size: 16px;
-      text-decoration: none;
-    }
-
-    /* 푸터 */
-    footer {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 24px;
-      border-top: 1px solid var(--border);
-      color: var(--text-muted);
-      font-size: 13px;
-    }
-
-    /* 영어 섹션 구분선 */
-    .lang-divider {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin: 56px 0 40px;
-    }
-    .lang-divider::before, .lang-divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-    .lang-divider span {
-      color: var(--text-muted);
-      font-size: 12px;
-      font-family: 'DM Sans', sans-serif;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    @media (max-width: 480px) {
-      header { padding: 40px 20px 32px; }
-      .container { padding: 32px 16px 60px; }
-      .summary-card { grid-template-columns: 1fr 1fr; }
-      .card { padding: 16px 18px; }
-    }
-  </style>
-</head>
-<body>
-
-<header>
-  <a class="logo" href="#">
-    <div class="logo-icon">N</div>
-    <span class="logo-name">Nomio</span>
-  </a>
-  <h1>개인정보처리방침</h1>
-  <p>Privacy Policy &nbsp;·&nbsp; 최종 업데이트: 2026년 3월</p>
-</header>
-
-<div class="container">
-
-  <!-- 요약 카드 -->
-  <div class="summary-card">
-    <div class="summary-item">
-      <span class="summary-icon">🔒</span>
-      <div>
-        <strong>수집 없음</strong>
-        <span>개인 금융 데이터는 기기에만 저장</span>
-      </div>
-    </div>
-    <div class="summary-item">
-      <span class="summary-icon">📢</span>
-      <div>
-        <strong>Google AdMob</strong>
-        <span>맞춤형 광고 표시 (거부 가능)</span>
-      </div>
-    </div>
-    <div class="summary-item">
-      <span class="summary-icon">📤</span>
-      <div>
-        <strong>공유 없음</strong>
-        <span>데이터를 외부에 전송하지 않음</span>
-      </div>
-    </div>
-    <div class="summary-item">
-      <span class="summary-icon">🌐</span>
-      <div>
-        <strong>환율 API만</strong>
-        <span>실시간 환율 조회 시 네트워크 사용</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- 1 -->
-  <section>
-    <div class="section-header">
-      <div class="section-num">1</div>
-      <h2>수집하는 정보</h2>
-    </div>
-    <div class="card">
-      <p>Nomio는 앱 사용에 필요한 <span class="highlight">최소한의 정보만</span> 처리하며, 사용자의 개인정보를 수집하지 않습니다.</p>
-      <ul>
-        <li>지출·수입·계좌 등 금융 데이터 <span class="badge">기기 로컬 저장</span></li>
-        <li>앱 설정 (언어, 통화, 테마 등) <span class="badge">기기 로컬 저장</span></li>
-        <li>환율 조회 시 외부 API 호출 <span class="badge">exchangerate-api.com</span></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 2 -->
-  <section>
-    <div class="section-header">
-      <div class="section-num">2</div>
-      <h2>데이터 저장 위치</h2>
-    </div>
-    <div class="card">
-      <p>입력하신 모든 금융 데이터는 <span class="highlight">사용자의 기기 내부 저장소에만</span> 저장됩니다. Nomio 서버 또는 제3자 서버로 전송되지 않습니다.</p>
-      <ul>
-        <li>앱 삭제 시 모든 데이터가 함께 삭제됩니다</li>
-        <li>백업 기능 사용 시 사용자가 직접 선택한 위치(iCloud / Google Drive / 로컬)에 저장됩니다</li>
-        <li>백업 파일은 사용자가 완전히 통제합니다</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 3 -->
-  <section>
-    <div class="section-header">
-      <div class="section-num">3</div>
-      <h2>네트워크 사용</h2>
-    </div>
-    <div class="card">
-      <p>Nomio는 단 하나의 목적으로만 인터넷을 사용합니다:</p>
-      <ul>
-        <li><strong>실시간 환율 조회</strong> — exchangerate-api.com API를 통해 환율 정보를 가져옵니다. 이 과정에서 개인 정보는 전송되지 않으며 환율 요청에는 사용자 식별 정보가 포함되지 않습니다.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 4 -->
-  <section>
-    <div class="section-header">
-      <div class="section-num">4</div>
-      <h2>생체 인증</h2>
-    </div>
-    <div class="card">
-      <p>앱 잠금 기능 활성화 시 기기의 생체 인증(Face ID, 지문 인식 등)을 사용합니다.</p>
-      <ul>
-        <li>생체 정보는 기기 보안 칩(Secure Enclave / TEE)에서만 처리됩니다</li>
-        <li>Nomio는 생체 데이터에 접근하거나 저장하지 않습니다</li>
-        <li>인증 결과(성공/실패)만 앱에 전달됩니다</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 5 -->
-  <section>
-    <div class="section-header">
-      <div class="section-num">5</div>
-      <h2>제3자 서비스</h2>
-    </div>
-    <div class="card">
-      <p>Nomio는 다음의 제3자 서비스를 사용합니다:</p>
-      <ul>
-        <li><strong>Google AdMob</strong> — 앱 내 배너 광고 제공. Google의 광고 ID를 사용하여 관심 기반 광고가 표시될 수 있습니다. <a href="https://policies.google.com/privacy" style="color:#818CF8;">Google 개인정보처리방침</a> 참조</li>
-        <li><strong>환율 API (exchangerate-api.com)</strong> — 실시간 환율 조회 (익명 요청)</li>
-        <li>소셜 로그인 없음 · 행동 분석 도구 없음 (Firebase Analytics 등)</li>
-      </ul>
-      <p style="margin-top:12px;">기기 설정에서 <span class="highlight">광고 ID 재설정</span> 또는 <span class="highlight">맞춤 광고 거부</span>가 가능합니다.<br>Android: 설정 → 개인정보 보호 → 광고 · iOS: 설정 → 개인정보 보호 → Apple 광고</p>
-    </div>
-  </section>
-
-  <!-- 6 -->
-  <section>
-    <div class="section-header">
-      <div class="section-num">6</div>
-      <h2>아동 개인정보 보호</h2>
-    </div>
-    <div class="card">
-      <p>Nomio는 13세 미만 아동을 대상으로 하지 않으며, 아동의 개인정보를 의도적으로 수집하지 않습니다.</p>
-    </div>
-  </section>
-
-  <!-- 7 -->
-  <section>
-    <div class="section-header">
-      <div class="section-num">7</div>
-      <h2>방침 변경</h2>
-    </div>
-    <div class="card">
-      <p>본 방침이 변경될 경우 이 페이지를 통해 공지합니다. 중요한 변경사항이 있을 경우 앱 내 알림을 통해 안내할 수 있습니다.</p>
-    </div>
-  </section>
-
-  <!-- 연락처 -->
-  <section>
-    <div class="section-header">
-      <div class="section-num">8</div>
-      <h2>문의</h2>
-    </div>
-    <div class="contact-card">
-      <p>개인정보처리방침에 관한 문의사항이 있으시면 아래로 연락해 주세요.</p>
-      <a class="contact-email" href="mailto:privacy@nomio.app">privacy@nomio.app</a>
-    </div>
-  </section>
-
-  <!-- 영문 구분선 -->
-  <div class="lang-divider"><span>English</span></div>
-
-  <!-- EN Header -->
-  <section>
-    <div class="section-header">
-      <div class="section-num">EN</div>
-      <h2>Privacy Policy — English Summary</h2>
-    </div>
-    <div class="card">
-      <p>Nomio is a personal finance app that <span class="highlight">stores all data locally on your device</span>. We do not collect, transmit, or share your personal or financial information with any third party.</p>
-      <ul>
-        <li><strong>No personal data collected</strong> — all entries stay on your device</li>
-        <li><strong>Network use</strong> — only for fetching exchange rates (anonymous requests)</li>
-        <li><strong>Ads</strong> — Google AdMob banner ads are shown. Google may use your Advertising ID for interest-based ads. You can opt out in device settings.</li>
-        <li><strong>No analytics SDKs, no social login</strong></li>
-        <li><strong>Biometrics</strong> — processed only by the device's secure hardware; Nomio never accesses raw biometric data</li>
-        <li><strong>Backups</strong> — saved to a location of your choice (iCloud / Google Drive / local); fully under your control</li>
-      </ul>
-      <p style="margin-top:16px;">For questions: <a class="contact-email" href="mailto:privacy@nomio.app" style="-webkit-text-fill-color:unset; color:#818CF8;">privacy@nomio.app</a></p>
-    </div>
-  </section>
-
+<div class="langbar" role="tablist" aria-label="Language">
+  <button data-lang="ko" class="active" type="button">한국어</button>
+  <button data-lang="en" type="button">English</button>
+  <button data-lang="de" type="button">Deutsch</button>
 </div>
 
-<footer>
-  © 2026 Nomio · <a href="mailto:privacy@nomio.app" style="color:var(--primary-light); text-decoration:none;">privacy@nomio.app</a>
-</footer>
+<!-- ================= KOREAN ================= -->
+<div class="page doc" data-lang="ko">
+  <div class="masthead">
+    <a class="brand" href="./"><span class="brand-mark">N</span><span>Nomio</span></a>
+    <h1>개인정보처리방침</h1>
+    <div class="meta">
+      <span class="tag">시행일 <b>2026.09.14</b></span>
+      <span class="tag">버전 <b>3.0</b></span>
+      <span class="tag">운영자 <b>Vicino Labs</b></span>
+    </div>
+  </div>
+  <div class="layout">
+    <nav class="toc">
+      <div class="toc-label">Contents</div>
+      <a href="#ko-1">1. 처리자 정보</a>
+      <a href="#ko-2">2. 핵심 요약</a>
+      <a href="#ko-3">3. 수집 정보(기기 로컬)</a>
+      <a href="#ko-4">4. 구글드라이브 백업</a>
+      <a href="#ko-5">5. 광고(AdMob)</a>
+      <a href="#ko-6">6. 인앱 결제</a>
+      <a href="#ko-7">7. 생체 인증·알림</a>
+      <a href="#ko-8">8. 환율 조회 API</a>
+      <a href="#ko-9">9. 미수집 정보</a>
+      <a href="#ko-10">10. 제3자 제공</a>
+      <a href="#ko-11">11. 보유·파기</a>
+      <a href="#ko-12">12. 아동 보호</a>
+      <a href="#ko-13">13. 정보주체 권리</a>
+      <a href="#ko-14">14. 방침 변경</a>
+      <a href="#ko-15">15. 문의처</a>
+    </nav>
+    <article>
+      <p class="lede">Vicino Labs가 만든 다통화 가계부 앱 Nomio는 여러분의 정보를 다루는 방식을 되도록 정확하게 알려드리려 합니다. 지출·수입 등 금융 기록은 기본적으로 기기 밖으로 나가지 않으며, 사용자가 직접 켠 경우에만 구글드라이브 백업이 작동합니다.</p>
 
-</body>
-</html>
+      <section id="ko-1"><h2>1. 처리자(운영자) 정보</h2>
+        <div class="id-card">
+          <dt>상호</dt><dd>Vicino Labs (개인사업자, Einzelunternehmen)</dd>
+          <dt>대표자</dt><dd>Jeong-Hwan Lee</dd>
+          <dt>주소</dt><dd>Ruhrallee 41, 44139 Dortmund, Germany</dd>
+          <dt>이메일</dt><dd><a href="mailto:vicinolabs@gmail.com">vicinolabs@gmail.com</a></dd>
+        </div>
+        <p>Vicino Labs는 EU 일반정보보호규정(GDPR)상 이 앱의 개인정보 처리에 관한 "컨트롤러(controller)"입니다.</p>
+      </section>
+
+      <section id="ko-2"><h2>2. 핵심 요약</h2>
+        <div class="summary-box"><ul>
+          <li>회원가입·로그인 없이 사용할 수 있습니다. 지출·수입·계좌·예산 등 금융 데이터는 <strong>기기에만(SQLite)</strong> 저장됩니다.</li>
+          <li><strong>구글드라이브 백업을 직접 켠 경우에만</strong>, 구글 계정 이메일 확인과 드라이브 안의 <strong>Nomio 전용 숨김 폴더</strong>에 대한 접근 권한을 요청합니다. 다른 드라이브 파일에는 접근할 수 없습니다.</li>
+          <li>앱 내 배너 광고에 <strong>Google AdMob</strong>을 사용합니다. 인앱 결제로 광고를 제거할 수 있습니다(일회성 결제).</li>
+          <li>실시간 환율 조회를 위해 외부 API(exchangerate-api.com)를 호출합니다.</li>
+          <li>앱 잠금(생체 인증)과 예산 알림은 <strong>기기 안에서만</strong> 처리되며 외부로 전송되지 않습니다.</li>
+          <li>행동 분석·추적 도구는 사용하지 않습니다.</li>
+        </ul></div>
+      </section>
+
+      <section id="ko-3"><h2>3. 수집하는 정보 (기기 로컬 저장)</h2>
+        <p>앱은 다음 정보를 <strong>이용자의 기기 내부 저장소(SQLite 데이터베이스 및 앱 설정)</strong>에만 보관합니다.</p>
+        <ol>
+          <li>지출·수입 내역 (금액, 통화, 카테고리, 날짜, 메모, 영수증 사진)</li>
+          <li>계좌·자산·부채 정보, 예산 설정값, 반복거래 설정</li>
+          <li>앱 설정 (언어, 기준 통화, 테마, 글자 크기 등)</li>
+          <li>환율 조회 시 외부 API 호출 기록 (개인 식별 정보 없음)</li>
+        </ol>
+        <p>이 정보는 기기 내부에만 저장되며, Nomio는 자체 서버를 운영하지 않으므로 회사가 이 데이터를 조회할 방법이 없습니다. 앱 삭제 시 함께 삭제됩니다.</p>
+      </section>
+
+      <section id="ko-4"><h2>4. 구글드라이브 백업 (선택 기능)</h2>
+        <p>설정 화면에서 <strong>"구글드라이브에 백업"을 직접 켠 경우에만</strong> 아래 처리가 발생합니다. 켜지 않으면 이 조항과 관련된 어떠한 정보 처리도 일어나지 않습니다.</p>
+        <ul>
+          <li>Google 로그인을 통해 <strong>이메일 주소를 확인</strong>합니다.</li>
+          <li>사용자 본인의 구글 드라이브 안에 있는, 사용자의 드라이브 화면에는 노출되지 않는 <strong>Nomio 전용 앱 데이터 폴더</strong>(<code>drive.appdata</code> 범위)에 백업 파일(지출·수입·계좌·카테고리·반복거래·설정)을 저장·조회합니다.</li>
+          <li>이 권한으로는 사용자의 다른 드라이브 파일, 메일, 연락처 등에 접근할 수 없습니다.</li>
+          <li>백업 파일 업로드·다운로드는 <strong>사용자 기기와 사용자 본인의 구글 계정 사이에서 직접</strong> 이루어지며, Nomio는 이 파일을 서버에서 읽거나 다른 목적으로 사용하지 않습니다.</li>
+          <li>이 기능은 설정에서 언제든 끌 수 있고, 구글 계정 연결 해제는 <a class="ext" href="https://myaccount.google.com/permissions">구글 계정 권한 관리</a>에서 직접 하실 수 있습니다.</li>
+        </ul>
+      </section>
+
+      <section id="ko-5"><h2>5. 광고(Google AdMob)</h2>
+        <p>앱은 배너 광고 제공을 위해 <strong>Google AdMob</strong>을 사용합니다. 이 과정에서 Google 및 광고 파트너가 광고 식별자(iOS: IDFA — 앱 추적 투명성(ATT) 동의 시에만 / Android: 광고 ID), IP 기반 대략적 위치, 기기 정보, 광고 노출·클릭 데이터를 처리할 수 있습니다. 이 정보는 Nomio가 직접 수집·저장하지 않으며 Google이 자체 정책에 따라 처리합니다.</p>
+        <p>EEA·영국·스위스 이용자에게는 Google 인증 동의관리플랫폼(UMP)을 통해 동의를 먼저 요청하며, 언제든 철회하거나 비맞춤형 광고만 받도록 선택할 수 있습니다. 기기 설정에서도 맞춤형 광고를 제한할 수 있습니다 (iOS: 설정 &gt; 개인정보 보호 및 보안 &gt; 추적 / Android: 설정 &gt; Google &gt; 광고). 자세한 내용: <a class="ext" href="https://policies.google.com/privacy">Google 개인정보처리방침</a>.</p>
+      </section>
+
+      <section id="ko-6"><h2>6. 인앱 결제 (광고 제거)</h2>
+        <p>이용자는 인앱 결제로 <strong>"광고 제거"</strong>를 일회성으로 구매하여 광고 없이 앱을 이용할 수 있습니다. 결제는 Apple App Store 또는 Google Play가 전적으로 처리하며, Nomio는 카드번호 등 결제 정보를 전달받거나 저장하지 않습니다.</p>
+      </section>
+
+      <section id="ko-7"><h2>7. 생체 인증 및 알림 권한</h2>
+        <p>앱 잠금 기능 활성화 시 기기의 생체 인증(Face ID, 지문 인식 등)을 사용합니다. 생체 정보는 기기 보안 칩(Secure Enclave / TEE)에서만 처리되며, Nomio는 생체 데이터에 접근하거나 저장하지 않고 인증 결과(성공/실패)만 전달받습니다.</p>
+        <p>예산 초과 알림, 반복거래 리마인더 등은 <strong>기기 안에서 예약·발송되는 로컬 알림</strong>이며 외부 서버와 통신하지 않습니다. 알림 권한은 기기 설정에서 언제든 철회할 수 있습니다.</p>
+      </section>
+
+      <section id="ko-8"><h2>8. 환율 조회 API</h2>
+        <p>실시간 환율 정보를 위해 exchangerate-api.com을 호출합니다. 요청에는 조회할 기준 통화 코드만 포함되며 사용자를 식별할 수 있는 정보는 포함되지 않습니다.</p>
+      </section>
+
+      <section id="ko-9"><h2>9. 수집하지 않는 정보</h2>
+        <p>Nomio는 이름, 생년월일, 전화번호, 정확한 위치정보, 연락처, 사진첩 전체 접근 정보를 직접 수집하지 않으며, 카메라는 영수증 촬영 시에만(사용자가 직접 실행) 사용되고 촬영된 사진은 기기에만 저장됩니다. 마이크는 사용하지 않습니다.</p>
+      </section>
+
+      <section id="ko-10"><h2>10. 제3자 제공 및 위탁</h2>
+        <p>Nomio는 이용자의 금융 데이터를 직접 보유하지 않으므로 제공할 정보 자체가 없습니다. 다만 광고(4·5조 Google AdMob)와 구글드라이브 백업을 켠 경우(4조 Google)에 한해 해당 서비스가 자체적으로 정보를 처리합니다. 그 밖의 목적으로 제3자에게 정보를 제공·위탁하지 않으며, 행동 분석 도구(Firebase Analytics 등)는 사용하지 않습니다.</p>
+      </section>
+
+      <section id="ko-11"><h2>11. 보유기간 및 파기</h2>
+        <p>기기에 저장된 정보는 설정의 "거래 내역 초기화" 또는 "전체 초기화" 기능, 혹은 앱 삭제로 언제든 파기할 수 있습니다. 구글드라이브에 저장한 백업 파일은 설정에서 언제든 삭제하거나 백업 기능을 꺼서 관리할 수 있습니다. Google이 처리하는 광고 관련 정보는 Google 자체의 보유기간 정책을 따릅니다.</p>
+      </section>
+
+      <section id="ko-12"><h2>12. 아동의 개인정보 보호</h2>
+        <p>Nomio는 특정 연령층을 대상으로 하지 않으며 만 14세 미만 아동으로부터 개인정보를 의도적으로 수집하지 않습니다. AdMob 광고는 아동 대상(child-directed) 처리로 설정되어 있지 않습니다.</p>
+      </section>
+
+      <section id="ko-13"><h2>13. 정보주체의 권리 (GDPR)</h2>
+        <p>Vicino Labs는 독일에 설립된 사업자로서 GDPR상 컨트롤러이며, 이용자는 다음 권리를 가집니다.</p>
+        <ul>
+          <li>열람권·정정권·삭제권·처리제한권·이의제기권·데이터이동권 (GDPR 제15~21조)</li>
+          <li>동의를 철회할 권리 (철회는 그 이전 처리의 적법성에 영향을 미치지 않습니다)</li>
+          <li>감독기관에 이의를 제기할 권리 — 노르트라인베스트팔렌주 정보자유보호관(LDI NRW) 또는 거주지 관할 감독기관</li>
+        </ul>
+        <p>대부분의 데이터(거래 내역 등)는 기기에만 있으므로, 위 권리는 앱의 설정 화면 또는 기기 자체에서 즉시 행사할 수 있습니다. 구글드라이브에 백업한 파일에 대해서도 앱 안에서 직접 삭제·복원할 수 있습니다.</p>
+      </section>
+
+      <section id="ko-14"><h2>14. 개인정보처리방침의 변경</h2>
+        <p>법령, 정책 또는 앱의 기능 변경에 따라 본 방침이 개정될 수 있습니다. 변경 시 변경사항과 시행일자를 본 페이지에 게시하고, 중요한 변경은 앱 내 공지로 안내합니다.</p>
+      </section>
+
+      <section id="ko-15"><h2>15. 문의처</h2>
+        <p>개인정보 처리에 관한 문의나 요청이 있으시면 아래로 연락해 주세요.</p>
+        <div class="contact-card"><span class="role">Operator</span><span class="name">Vicino Labs</span><a href="mailto:vicinolabs@gmail.com">vicinolabs@gmail.com</a></div>
+      </section>
+    </article>
+  </div>
+  <footer><p>본 방침은 2026년 9월 14일부터 시행됩니다 (버전 3.0).</p><p><a href="./terms/">이용약관 보기 →</a></p></footer>
+</div>
+
+<!-- ================= ENGLISH ================= -->
+<div class="page doc" data-lang="en" hidden>
+  <div class="masthead">
+    <a class="brand" href="./"><span class="brand-mark">N</span><span>Nomio</span></a>
+    <h1>Privacy Policy</h1>
+    <div class="meta">
+      <span class="tag">Effective <b>2026-09-14</b></span>
+      <span class="tag">Version <b>3.0</b></span>
+      <span class="tag">Operator <b>Vicino Labs</b></span>
+    </div>
+  </div>
+  <div class="layout">
+    <nav class="toc">
+      <div class="toc-label">Contents</div>
+      <a href="#en-1">1. Data controller</a>
+      <a href="#en-2">2. Summary</a>
+      <a href="#en-3">3. Data stored locally</a>
+      <a href="#en-4">4. Google Drive backup</a>
+      <a href="#en-5">5. Advertising (AdMob)</a>
+      <a href="#en-6">6. In-app purchase</a>
+      <a href="#en-7">7. Biometrics & notifications</a>
+      <a href="#en-8">8. Exchange-rate API</a>
+      <a href="#en-9">9. Data we don't collect</a>
+      <a href="#en-10">10. Third parties</a>
+      <a href="#en-11">11. Retention & deletion</a>
+      <a href="#en-12">12. Children's privacy</a>
+      <a href="#en-13">13. Your rights (GDPR)</a>
+      <a href="#en-14">14. Changes to this policy</a>
+      <a href="#en-15">15. Contact</a>
+    </nav>
+    <article>
+      <p class="lede">Nomio is a multi-currency budgeting app made by Vicino Labs. We'd rather be precise than vague about how your information is handled: your financial records stay on your device by default, and Google Drive backup only runs if you turn it on yourself.</p>
+
+      <section id="en-1"><h2>1. Data controller</h2>
+        <div class="id-card">
+          <dt>Trading name</dt><dd>Vicino Labs (sole proprietorship, Einzelunternehmen)</dd>
+          <dt>Owner</dt><dd>Jeong-Hwan Lee</dd>
+          <dt>Address</dt><dd>Ruhrallee 41, 44139 Dortmund, Germany</dd>
+          <dt>Email</dt><dd><a href="mailto:vicinolabs@gmail.com">vicinolabs@gmail.com</a></dd>
+        </div>
+        <p>Vicino Labs is the "controller" for personal data processed in connection with this app under the EU General Data Protection Regulation (GDPR).</p>
+      </section>
+
+      <section id="en-2"><h2>2. Summary</h2>
+        <div class="summary-box"><ul>
+          <li>No account or sign-in is required to use the app. Expenses, income, accounts, and budgets are stored <strong>only on your device (SQLite)</strong>.</li>
+          <li><strong>Only if you turn on Google Drive backup</strong> do we request your Google account email and access to a <strong>hidden, Nomio-only folder</strong> in your Drive. We cannot access any other file in your Drive.</li>
+          <li>We use <strong>Google AdMob</strong> for banner ads. You can remove ads with a one-time in-app purchase.</li>
+          <li>We call an external API (exchangerate-api.com) to fetch live exchange rates.</li>
+          <li>App-lock (biometrics) and budget reminders are processed <strong>entirely on your device</strong> and never leave it.</li>
+          <li>We use no behavioral analytics or tracking SDKs.</li>
+        </ul></div>
+      </section>
+
+      <section id="en-3"><h2>3. Data stored locally on your device</h2>
+        <p>The app keeps the following only in local storage on your device (an SQLite database plus app settings):</p>
+        <ol>
+          <li>Expense and income entries (amount, currency, category, date, notes, receipt photos)</li>
+          <li>Accounts, assets/liabilities, budget settings, recurring-transaction rules</li>
+          <li>App settings (language, base currency, theme, font size, etc.)</li>
+          <li>Exchange-rate lookups sent to an external API (no personal identifiers included)</li>
+        </ol>
+        <p>This information stays on your device. Nomio runs no server of its own, so there is no way for us to view this data. It is deleted along with the app.</p>
+      </section>
+
+      <section id="en-4"><h2>4. Google Drive backup (optional)</h2>
+        <p>The processing below only happens if you explicitly turn on <strong>"Back up to Google Drive"</strong> in Settings. If you never turn it on, none of this section applies to you.</p>
+        <ul>
+          <li>We verify your <strong>email address</strong> via Google sign-in.</li>
+          <li>We store and read a backup file (expenses, income, accounts, categories, recurring rules, settings) in a <strong>Nomio-only app data folder</strong> inside your own Google Drive (the <code>drive.appdata</code> scope) — this folder is hidden from your normal Drive view.</li>
+          <li>This permission cannot access any other file in your Drive, your email, or your contacts.</li>
+          <li>Uploads and downloads happen <strong>directly between your device and your own Google account</strong>; Nomio has no server that reads this file or uses it for any other purpose.</li>
+          <li>You can turn this off anytime in Settings, and revoke access entirely from <a class="ext" href="https://myaccount.google.com/permissions">Google Account permissions</a>.</li>
+        </ul>
+      </section>
+
+      <section id="en-5"><h2>5. Advertising (Google AdMob)</h2>
+        <p>The app uses <strong>Google AdMob</strong> to show banner ads. Google and its advertising partners may process an advertising identifier (IDFA on iOS — only with App Tracking Transparency consent — or Advertising ID on Android), an approximate IP-based location, device information, and ad interaction data. We do not collect or store this ourselves; Google processes it under its own policies.</p>
+        <p>Users in the EEA, UK, and Switzerland are shown a consent request via Google's certified Consent Management Platform (UMP) first, and can withdraw consent or choose non-personalized ads anytime. You can also limit ad personalization in device settings (iOS: Settings &gt; Privacy &amp; Security &gt; Tracking / Android: Settings &gt; Google &gt; Ads). See: <a class="ext" href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
+      </section>
+
+      <section id="en-6"><h2>6. In-app purchase (Remove ads)</h2>
+        <p>You can buy <strong>"Remove ads"</strong> as a one-time in-app purchase to use the app without ads. Payment is processed entirely by the Apple App Store or Google Play — we never receive or store your card details.</p>
+      </section>
+
+      <section id="en-7"><h2>7. Biometrics and notification permission</h2>
+        <p>If you enable app lock, the app uses your device's biometric authentication (Face ID, fingerprint, etc.). Biometric data is processed only by the device's secure hardware (Secure Enclave / TEE); Nomio never accesses or stores raw biometric data and only receives a pass/fail result.</p>
+        <p>Budget-overspend alerts and recurring-transaction reminders are <strong>local notifications scheduled and delivered entirely on your device</strong>, with no server involved. You can withdraw notification permission anytime in device settings.</p>
+      </section>
+
+      <section id="en-8"><h2>8. Exchange-rate API</h2>
+        <p>We call exchangerate-api.com to fetch live exchange rates. Requests include only the currency codes needed and contain no information that identifies you.</p>
+      </section>
+
+      <section id="en-9"><h2>9. Data we don't collect</h2>
+        <p>We do not directly collect your name, date of birth, phone number, precise location, contacts, or full photo-library access. The camera is used only when you choose to photograph a receipt, and that photo is stored only on your device. We do not use the microphone.</p>
+      </section>
+
+      <section id="en-10"><h2>10. Third parties</h2>
+        <p>We don't hold your financial data ourselves, so there's nothing for us to share. The exceptions are Google AdMob (Sections 5) and, only if you've turned it on, Google Drive backup (Section 4) — both processed independently by Google. We do not share or outsource data for any other purpose, and we use no analytics SDKs (e.g. no Firebase Analytics).</p>
+      </section>
+
+      <section id="en-11"><h2>11. Retention & deletion</h2>
+        <p>You can delete data on your device anytime via "Reset transactions" or "Full reset" in Settings, or by deleting the app. Backup files stored in Google Drive can be deleted or managed anytime by turning the backup feature off in Settings. Ad-related data processed by Google follows Google's own retention policies.</p>
+      </section>
+
+      <section id="en-12"><h2>12. Children's privacy</h2>
+        <p>The app is not directed at any particular age group and does not knowingly collect personal data from children under 14. AdMob ads served in the app are not configured for child-directed treatment.</p>
+      </section>
+
+      <section id="en-13"><h2>13. Your rights (GDPR)</h2>
+        <p>Because Vicino Labs is established in Germany and acts as a controller under the GDPR, you have the following rights:</p>
+        <ul>
+          <li>The right of access, rectification, erasure, restriction of processing, objection, and data portability (GDPR Articles 15–21)</li>
+          <li>The right to withdraw consent at any time (this doesn't affect the lawfulness of processing before the withdrawal)</li>
+          <li>The right to lodge a complaint with a supervisory authority — such as the data protection authority of North Rhine-Westphalia (LDI NRW) or the authority where you live</li>
+        </ul>
+        <p>Since most of your data (like your transaction history) never leaves your device, you can already exercise these rights instantly from the app's settings or your device itself. Backup files in Google Drive can also be deleted or restored directly from within the app.</p>
+      </section>
+
+      <section id="en-14"><h2>14. Changes to this policy</h2>
+        <p>We may update this policy to reflect changes in law, our practices, or the app's features. Any change will be posted here with its effective date, and material changes will also be announced in the app.</p>
+      </section>
+
+      <section id="en-15"><h2>15. Contact</h2>
+        <p>For any question or request about how your data is handled, please reach out.</p>
+        <div class="contact-card"><span class="role">Operator</span><span class="name">Vicino Labs</span><a href="mailto:vicinolabs@gmail.com">vicinolabs@gmail.com</a></div>
+      </section>
+    </article>
+  </div>
+  <footer><p>This policy is effective as of September 14, 2026 (version 3.0).</p><p><a href="./terms/">View Terms of Service →</a></p></footer>
+</div>
+
+<!-- ================= DEUTSCH ================= -->
+<div class="page doc" data-lang="de" hidden>
+  <div class="masthead">
+    <a class="brand" href="./"><span class="brand-mark">N</span><span>Nomio</span></a>
+    <h1>Datenschutzerklärung</h1>
+    <div class="meta">
+      <span class="tag">Gültig ab <b>14.09.2026</b></span>
+      <span class="tag">Version <b>3.0</b></span>
+      <span class="tag">Betreiber <b>Vicino Labs</b></span>
+    </div>
+  </div>
+  <div class="layout">
+    <nav class="toc">
+      <div class="toc-label">Inhalt</div>
+      <a href="#de-1">§ 1 Verantwortlicher</a>
+      <a href="#de-2">§ 2 Zusammenfassung</a>
+      <a href="#de-3">§ 3 Lokale Daten</a>
+      <a href="#de-4">§ 4 Google-Drive-Backup</a>
+      <a href="#de-5">§ 5 Werbung (AdMob)</a>
+      <a href="#de-6">§ 6 In-App-Kauf</a>
+      <a href="#de-7">§ 7 Biometrie & Benachrichtigungen</a>
+      <a href="#de-8">§ 8 Wechselkurs-API</a>
+      <a href="#de-9">§ 9 Nicht erhobene Daten</a>
+      <a href="#de-10">§ 10 Dritte</a>
+      <a href="#de-11">§ 11 Speicherdauer</a>
+      <a href="#de-12">§ 12 Kinder</a>
+      <a href="#de-13">§ 13 Ihre Rechte (DSGVO)</a>
+      <a href="#de-14">§ 14 Änderungen</a>
+      <a href="#de-15">§ 15 Kontakt</a>
+    </nav>
+    <article>
+      <p class="lede">Nomio ist eine Haushaltsbuch-App für mehrere Währungen von Vicino Labs. Wir möchten lieber genau als vage erklären, was mit Ihren Daten geschieht: Ihre Finanzdaten verbleiben standardmäßig auf Ihrem Gerät, und das Google-Drive-Backup läuft nur, wenn Sie es selbst aktivieren.</p>
+
+      <section id="de-1"><h2>§ 1 Verantwortlicher</h2>
+        <div class="id-card">
+          <dt>Firma</dt><dd>Vicino Labs (Einzelunternehmen)</dd>
+          <dt>Inhaber</dt><dd>Jeong-Hwan Lee</dd>
+          <dt>Anschrift</dt><dd>Ruhrallee 41, 44139 Dortmund, Deutschland</dd>
+          <dt>E-Mail</dt><dd><a href="mailto:vicinolabs@gmail.com">vicinolabs@gmail.com</a></dd>
+        </div>
+        <p>Vicino Labs ist Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) für die im Zusammenhang mit dieser App verarbeiteten personenbezogenen Daten.</p>
+      </section>
+
+      <section id="de-2"><h2>§ 2 Zusammenfassung</h2>
+        <div class="summary-box"><ul>
+          <li>Keine Registrierung, kein Login erforderlich. Ausgaben, Einnahmen, Konten und Budgets werden <strong>ausschließlich auf Ihrem Gerät (SQLite)</strong> gespeichert.</li>
+          <li><strong>Nur wenn Sie das Google-Drive-Backup aktivieren</strong>, fragen wir Ihre Google-Konto-E-Mail ab und erhalten Zugriff auf einen <strong>versteckten, ausschließlich für Nomio bestimmten Ordner</strong> in Ihrem Drive. Auf andere Dateien in Ihrem Drive können wir nicht zugreifen.</li>
+          <li>Wir nutzen <strong>Google AdMob</strong> für Banner-Werbung. Werbung lässt sich per einmaligem In-App-Kauf entfernen.</li>
+          <li>Für aktuelle Wechselkurse rufen wir eine externe API (exchangerate-api.com) auf.</li>
+          <li>App-Sperre (Biometrie) und Budget-Erinnerungen werden <strong>vollständig auf Ihrem Gerät</strong> verarbeitet und verlassen es nie.</li>
+          <li>Wir verwenden keine Analyse- oder Tracking-SDKs.</li>
+        </ul></div>
+      </section>
+
+      <section id="de-3"><h2>§ 3 Auf Ihrem Gerät gespeicherte Daten</h2>
+        <p>Die App speichert ausschließlich lokal auf Ihrem Gerät (eine SQLite-Datenbank sowie App-Einstellungen):</p>
+        <ol>
+          <li>Ausgaben und Einnahmen (Betrag, Währung, Kategorie, Datum, Notizen, Belegfotos)</li>
+          <li>Konten, Vermögenswerte/Verbindlichkeiten, Budgeteinstellungen, Regeln für wiederkehrende Buchungen</li>
+          <li>App-Einstellungen (Sprache, Basiswährung, Design, Schriftgröße usw.)</li>
+          <li>An eine externe API gesendete Wechselkursabfragen (ohne personenbezogene Kennungen)</li>
+        </ol>
+        <p>Diese Informationen verbleiben auf Ihrem Gerät. Nomio betreibt keinen eigenen Server, sodass wir keine Möglichkeit haben, diese Daten einzusehen. Sie werden zusammen mit der App gelöscht.</p>
+      </section>
+
+      <section id="de-4"><h2>§ 4 Google-Drive-Backup (optional)</h2>
+        <p>Die folgende Verarbeitung findet nur statt, wenn Sie <strong>"Backup auf Google Drive"</strong> in den Einstellungen selbst aktivieren. Aktivieren Sie es nie, betrifft Sie dieser Abschnitt nicht.</p>
+        <ul>
+          <li>Wir bestätigen Ihre <strong>E-Mail-Adresse</strong> über die Google-Anmeldung.</li>
+          <li>Wir speichern und lesen eine Backup-Datei (Ausgaben, Einnahmen, Konten, Kategorien, wiederkehrende Regeln, Einstellungen) in einem <strong>ausschließlich für Nomio bestimmten App-Datenordner</strong> in Ihrem eigenen Google Drive (Berechtigung <code>drive.appdata</code>) — dieser Ordner ist in Ihrer normalen Drive-Ansicht nicht sichtbar.</li>
+          <li>Diese Berechtigung ermöglicht keinen Zugriff auf andere Dateien in Ihrem Drive, Ihre E-Mails oder Ihre Kontakte.</li>
+          <li>Uploads und Downloads erfolgen <strong>direkt zwischen Ihrem Gerät und Ihrem eigenen Google-Konto</strong>; Nomio betreibt keinen Server, der diese Datei liest oder anderweitig nutzt.</li>
+          <li>Sie können dies jederzeit in den Einstellungen deaktivieren und den Zugriff vollständig über <a class="ext" href="https://myaccount.google.com/permissions">Google-Konto-Berechtigungen</a> widerrufen.</li>
+        </ul>
+      </section>
+
+      <section id="de-5"><h2>§ 5 Werbung (Google AdMob)</h2>
+        <p>Die App nutzt <strong>Google AdMob</strong> zur Anzeige von Bannerwerbung. Google und seine Werbepartner können dabei eine Werbekennung (iOS: IDFA — nur mit Zustimmung über App-Tracking-Transparenz — bzw. Android: Werbe-ID), einen ungefähren, IP-basierten Standort, Geräteinformationen sowie Interaktionsdaten verarbeiten. Wir selbst erheben oder speichern diese Daten nicht; Google verarbeitet sie nach eigenen Richtlinien.</p>
+        <p>Nutzern im EWR, in Großbritannien und der Schweiz wird zunächst über eine von Google zertifizierte Einwilligungsplattform (UMP) eine Einwilligung eingeholt; sie kann jederzeit widerrufen oder auf nicht-personalisierte Werbung beschränkt werden. Eine Einschränkung ist auch über die Geräteeinstellungen möglich (iOS: Einstellungen &gt; Datenschutz &amp; Sicherheit &gt; Tracking / Android: Einstellungen &gt; Google &gt; Anzeigen). Siehe: <a class="ext" href="https://policies.google.com/privacy">Datenschutzerklärung von Google</a>.</p>
+      </section>
+
+      <section id="de-6"><h2>§ 6 In-App-Kauf ("Werbung entfernen")</h2>
+        <p>Sie können <strong>"Werbung entfernen"</strong> als einmaligen In-App-Kauf erwerben, um die App ohne Werbung zu nutzen. Die Zahlung wird vollständig über den Apple App Store oder Google Play abgewickelt; wir erhalten oder speichern keine Zahlungsdaten.</p>
+      </section>
+
+      <section id="de-7"><h2>§ 7 Biometrie und Benachrichtigungsberechtigung</h2>
+        <p>Bei aktivierter App-Sperre nutzt die App die biometrische Authentifizierung Ihres Geräts (Face ID, Fingerabdruck usw.). Biometrische Daten werden ausschließlich von der sicheren Hardware des Geräts (Secure Enclave / TEE) verarbeitet; Nomio greift nie auf biometrische Rohdaten zu und erhält lediglich ein Bestanden/Nicht-bestanden-Ergebnis.</p>
+        <p>Budget-Überschreitungswarnungen und Erinnerungen an wiederkehrende Buchungen sind <strong>lokale Benachrichtigungen, die vollständig auf Ihrem Gerät geplant und zugestellt werden</strong> — ohne Server. Sie können diese Berechtigung jederzeit in den Geräteeinstellungen widerrufen.</p>
+      </section>
+
+      <section id="de-8"><h2>§ 8 Wechselkurs-API</h2>
+        <p>Für aktuelle Wechselkurse rufen wir exchangerate-api.com auf. Die Anfragen enthalten nur die benötigten Währungscodes und keine Informationen, die Sie identifizieren.</p>
+      </section>
+
+      <section id="de-9"><h2>§ 9 Nicht erhobene Daten</h2>
+        <p>Wir erheben nicht direkt Ihren Namen, Ihr Geburtsdatum, Ihre Telefonnummer, Ihren genauen Standort, Ihre Kontakte oder vollständigen Zugriff auf Ihre Fotomediathek. Die Kamera wird nur genutzt, wenn Sie selbst einen Beleg fotografieren, und dieses Foto wird ausschließlich auf Ihrem Gerät gespeichert. Wir nutzen kein Mikrofon.</p>
+      </section>
+
+      <section id="de-10"><h2>§ 10 Weitergabe an Dritte</h2>
+        <p>Da wir Ihre Finanzdaten nicht selbst vorhalten, gibt es grundsätzlich nichts, was wir weitergeben könnten. Ausnahmen sind Google AdMob (§ 5) sowie — nur falls aktiviert — das Google-Drive-Backup (§ 4), die beide eigenständig von Google verarbeitet werden. Für andere Zwecke geben wir keine Daten an Dritte weiter oder lassen sie verarbeiten; wir setzen keine Analyse-SDKs ein (z. B. kein Firebase Analytics).</p>
+      </section>
+
+      <section id="de-11"><h2>§ 11 Speicherdauer und Löschung</h2>
+        <p>Auf dem Gerät gespeicherte Daten können jederzeit über "Transaktionen zurücksetzen" oder "Vollständig zurücksetzen" in den Einstellungen oder durch Löschen der App entfernt werden. In Google Drive gespeicherte Backup-Dateien können Sie jederzeit löschen oder verwalten, indem Sie die Backup-Funktion in den Einstellungen deaktivieren. Von Google verarbeitete werbebezogene Daten unterliegen den eigenen Speicherfristen von Google.</p>
+      </section>
+
+      <section id="de-12"><h2>§ 12 Schutz von Kindern</h2>
+        <p>Die App richtet sich an keine bestimmte Altersgruppe und erhebt nicht wissentlich personenbezogene Daten von Kindern unter 14 Jahren. Die über AdMob ausgespielte Werbung ist nicht für eine an Kinder gerichtete Behandlung konfiguriert.</p>
+      </section>
+
+      <section id="de-13"><h2>§ 13 Ihre Rechte (DSGVO)</h2>
+        <p>Da Vicino Labs in Deutschland niedergelassen ist und als Verantwortlicher im Sinne der DSGVO handelt, haben Sie folgende Rechte:</p>
+        <ul>
+          <li>Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Widerspruch und Datenübertragbarkeit (Art. 15–21 DSGVO)</li>
+          <li>Recht auf jederzeitigen Widerruf einer erteilten Einwilligung (die Rechtmäßigkeit der bis dahin erfolgten Verarbeitung bleibt unberührt)</li>
+          <li>Recht auf Beschwerde bei einer Aufsichtsbehörde — zuständig ist insbesondere die Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen (LDI NRW) oder die Aufsichtsbehörde Ihres Wohnsitzes</li>
+        </ul>
+        <p>Da die meisten Ihrer Daten (z. B. der Transaktionsverlauf) ohnehin nur auf Ihrem Gerät liegen, können Sie diese Rechte dort und in den App-Einstellungen bereits unmittelbar selbst ausüben. Auch Backup-Dateien in Google Drive können Sie direkt aus der App heraus löschen oder wiederherstellen.</p>
+      </section>
+
+      <section id="de-14"><h2>§ 14 Änderungen dieser Erklärung</h2>
+        <p>Diese Erklärung kann aufgrund geänderter Rechtslage, Praxis oder Funktionen der App angepasst werden. Änderungen werden mit Datum auf dieser Seite veröffentlicht; wesentliche Änderungen werden zusätzlich in der App angekündigt.</p>
+      </section>
+
+      <section id="de-15"><h2>§ 15 Kontakt</h2>
+        <p>Bei Fragen oder Anliegen zur Datenverarbeitung wenden Sie sich bitte an:</p>
+        <div class="contact-card"><span class="role">Betreiber</span><span class="name">Vicino Labs</span><a href="mailto:vicinolabs@gmail.com">vicinolabs@gmail.com</a></div>
+      </section>
+    </article>
+  </div>
+  <footer><p>Diese Erklärung gilt ab dem 14. September 2026 (Version 3.0).</p><p><a href="./terms/">Zu den Nutzungsbedingungen →</a></p></footer>
+</div>
+
+<script>
+  (function () {
+    var bar = document.querySelector('.langbar');
+    var docs = document.querySelectorAll('.doc');
+    var supported = ['ko', 'en', 'de'];
+    function setLang(lang) {
+      docs.forEach(function (d) { d.hidden = d.getAttribute('data-lang') !== lang; });
+      bar.querySelectorAll('button').forEach(function (b) {
+        b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+      });
+      try { localStorage.setItem('nomio-legal-lang', lang); } catch (e) {}
+    }
+    bar.addEventListener('click', function (e) {
+      var btn = e.target.closest('button[data-lang]');
+      if (!btn) return;
+      setLang(btn.getAttribute('data-lang'));
+    });
+    var initial = 'ko';
+    try {
+      var hash = (location.hash || '').replace('#', '');
+      var saved = localStorage.getItem('nomio-legal-lang');
+      var nav = (navigator.language || 'en').slice(0, 2);
+      if (supported.indexOf(hash) !== -1) initial = hash;
+      else if (saved && supported.indexOf(saved) !== -1) initial = saved;
+      else if (supported.indexOf(nav) !== -1) initial = nav;
+    } catch (e) {}
+    if (initial !== 'ko') setLang(initial);
+  })();
+</script>
+
+</body></html>
